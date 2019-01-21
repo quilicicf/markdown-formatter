@@ -1,0 +1,5 @@
+extends: '@talend/eslint-config/api-test.yaml'
+env:
+  jest/globals: true
+plugins:
+  - jest
