@@ -8,7 +8,6 @@
 
   * [Info](#info)
   * [Status](#status)
-  * [Static analysis](#static-analysis)
 
 * [What it is](#what-it-is)
 
