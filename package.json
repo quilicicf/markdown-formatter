@@ -1,15 +1,16 @@
 {
-  "name": "markdown-toc",
+  "name": "@quilicicf/markdown-formatter",
   "version": "1.0.0",
-  "description": "Reads a markdown file and fills in the ToC",
+  "description": "A markdown formatter intended for writing specifications",
   "main": "index.js",
   "scripts": {
     "lint": "eslint '**/*.js'",
-    "test": "npm run lint; jest"
+    "test": "npm run lint; jest",
+    "format:readme": "node scripts/formatReadme.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/quilicicf/markdown-toc.git"
+    "url": "git+https://github.com/quilicicf/markdown-formatter.git"
   },
   "keywords": [
     "markdown",
@@ -18,9 +19,9 @@
   "author": "quilicicf <quilicicf@gmail.com> (https://github.com/quilicicf)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/quilicicf/markdown-toc/issues"
+    "url": "https://github.com/quilicicf/markdown-formatter/issues"
   },
-  "homepage": "https://github.com/quilicicf/markdown-toc#readme",
+  "homepage": "https://github.com/quilicicf/markdown-formatter#readme",
   "dependencies": {
     "lodash": "4.17.11",
     "mdast-util-toc": "3.0.1",
