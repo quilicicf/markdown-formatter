@@ -5,7 +5,7 @@
 <!-- TOC START min:2 max:4 -->
 <!-- TOC END -->
 
-## A Level 2 title
+## A level 2 title
 
 **Insistently** Bow ties are *cool*!
 
@@ -37,7 +37,7 @@ process.stderr.write('Wrong fences bro!');
 |You hate me; you want to kill me! Well, go on! Kill me! KILL ME!|What the hell tho?|
 |Yowzah!!!|I'm giving up on ya|
 
-## Another Level 2 title
+## Another level 2 title
 
 - Bullets must be '*', thematic indentation requires 4 spaces!
   - It's art! A statement on modern society, 'Oh Ain't Modern Society Awful?'!
