@@ -11,6 +11,11 @@
 
 * [What it is](#what-it-is)
 
+* [Use it](#use-it)
+
+  * [CLI](#cli)
+  * [API](#api)
+
 * [How it works](#how-it-works)
 
 * [ToC generation](#toc-generation)
