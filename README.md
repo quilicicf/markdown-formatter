@@ -41,6 +41,29 @@ It is supposed to be used as a formatter for your markdown. Feel free to plug it
 
 > Note: obviously, this doc is formatted by dog-fooding the package. Look at npm script `format:readme` in `package.json`.
 
+## Use it
+
+### CLI
+
+```shell
+$ npm install -g @quilicicf/markdown-formatter
+$ markdown-format --content '**Toto**'
+  > __Toto__
+$
+```
+
+### API
+
+```js
+const main = async () => {
+  const { formatFromString } = require('@quilicicf/markdown-formatter');
+  const formattedContent = await formatFromString('**Toto**');
+  process.stdout.write(`Result:\n${formattedContent}\n`);
+}
+
+main();
+```
+
 ## How it works
 
 It uses [remark](https://www.npmjs.com/package/remark) to parse the markdown and generate an AST.
@@ -70,7 +93,6 @@ The accepted parameters are:
 
 ## Roadmap
 
-* [ ] Add CLI
 * [ ] Create a file formatter (currently only raw string formatting)
 * [ ] Publish to NPM
 * [ ] Create atom formatter
