@@ -16,6 +16,7 @@
     "url": "git+https://github.com/quilicicf/markdown-formatter.git"
   },
   "keywords": [
+    "formatter",
     "markdown",
     "toc"
   ],
