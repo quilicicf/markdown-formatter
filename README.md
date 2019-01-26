@@ -116,7 +116,6 @@ The ToC is inserted in the HTML comments described below and can be configured w
 
 ## Roadmap
 
-* [ ] Publish to NPM
 * [ ] Create atom formatter
 * [ ] Create IntelliJ formatter
 * [ ] Add dot graphs capabilities
