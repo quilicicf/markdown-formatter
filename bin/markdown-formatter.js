@@ -12,21 +12,32 @@ const yargs = require('yargs');
  *  REQUIRE MODULES  *
  ********************/
 
+const { existsSync } = require('fs');
 const isValidPath = require('is-valid-path');
 
-const formatFromString = require('../lib/formatFromString');
 const writeFile = require('../lib/writeFile');
+const formatFromFile = require('../lib/formatFromFile');
+const formatFromString = require('../lib/formatFromString');
 
 /*************************
  *   PROCESS ARGUMENTS   *
  ************************/
 
 const main = async (args) => {
-  const { content, 'output-file': outputFile } = args;
-  const result = await formatFromString(content);
+  const {
+    content,
+    file: inputFile,
+    'output-file': outputFile,
+    replace: shouldReplaceFile,
+  } = args;
 
-  return outputFile
-    ? writeFile(outputFile, result)
+  const result = inputFile
+    ? await formatFromFile(inputFile)
+    : await formatFromString(content);
+
+  const fileDestination = shouldReplaceFile ? inputFile : outputFile;
+  return fileDestination
+    ? writeFile(fileDestination, result)
     : Promise.resolve(process.stdout.write(`${result}\n`));
 };
 
@@ -36,6 +47,23 @@ const parseArgs = () => yargs
     alias: 'c',
     describe: 'Markdown string to format',
     type: 'string',
+    conflicts: 'file',
+  })
+  .option('replace', {
+    alias: 'r',
+    describe: 'Replaces the file content',
+    type: 'boolean',
+    conflicts: [ 'content', 'output-file' ],
+  })
+  .option('file', {
+    alias: 'f',
+    describe: 'Markdown file to format',
+    type: 'string',
+    conflicts: 'content',
+    coerce (inputFile) {
+      if (!existsSync(inputFile)) { throw Error(`File ${inputFile} does not exist`); }
+      return inputFile;
+    },
   })
   .option('output-file', {
     alias: 'o',

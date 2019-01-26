@@ -14,11 +14,16 @@
 * [Use it](#use-it)
 
   * [CLI](#cli)
+
+    * [Options](#options)
+
   * [API](#api)
 
 * [How it works](#how-it-works)
 
 * [ToC generation](#toc-generation)
+
+  * [ToC parameters](#toc-parameters)
 
 * [Roadmap](#roadmap)
 
@@ -57,13 +62,26 @@ $ markdown-format --content '**Toto**'
 $
 ```
 
+#### Options
+
+|      Option     | Alias | Type    | Description                                                                                                            |
+| :-------------: | :---: | ------- | ---------------------------------------------------------------------------------------------------------------------- |
+|   __content__   |   c   | String  | Markdown string to format. Mutually exclusive with `file`                                                              |
+|     __file__    |   f   | String  | File path to Markdown file to format. Mutually exclusive with `content`                                                |
+| __output-file__ |   o   | String  | When specified, creates/overwrites a file with the formatted markdown                                                  |
+|   __replace__   |   r   | Boolean | Replaces the `file` content in-place. Mutually exclusive with `content` & `output-file`. Only valid when `file` is set |
+
 ### API
 
 ```js
+const { formatFromFile, formatFromString } = require('@quilicicf/markdown-formatter');
+
 const main = async () => {
-  const { formatFromString } = require('@quilicicf/markdown-formatter');
-  const formattedContent = await formatFromString('**Toto**');
-  process.stdout.write(`Result:\n${formattedContent}\n`);
+  const formattedFromString = await formatFromString('**Toto**');
+  process.stdout.write(`Formatted from string:\n${formattedFromString}\n`);
+
+  const formattedFromFile = await formatFromFile(filePath);
+  process.stdout.write(`Formatted from file:\n${formattedFromFile}\n`);
 }
 
 main();
@@ -89,7 +107,7 @@ The ToC is inserted in the HTML comments described below and can be configured w
 <!-- TOC END -->
 ```
 
-The accepted parameters are:
+### ToC parameters
 
 | Name    | Accepted values          | Default value | Description                                                 |
 | ------- | ------------------------ | :-----------: | ----------------------------------------------------------- |
@@ -98,7 +116,6 @@ The accepted parameters are:
 
 ## Roadmap
 
-* [ ] Create a file formatter (currently only raw string formatting)
 * [ ] Publish to NPM
 * [ ] Create atom formatter
 * [ ] Create IntelliJ formatter

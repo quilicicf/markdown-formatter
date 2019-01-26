@@ -1,3 +1,4 @@
+const formatFromFile = require('./lib/formatFromFile');
 const formatFromString = require('./lib/formatFromString');
 
-module.exports = { formatFromString };
+module.exports = { formatFromFile, formatFromString };
