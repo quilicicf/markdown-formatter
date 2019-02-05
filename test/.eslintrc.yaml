@@ -1,4 +1,4 @@
-extends: '@talend/eslint-config/api-test.yaml'
+extends: '@talend/eslint-config/api-test-jasmine.yaml'
 env:
   jest/globals: true
 plugins:
