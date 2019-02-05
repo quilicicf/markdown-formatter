@@ -3,6 +3,9 @@
 > A sub-title
 
 <!-- TOC START min:2 max:4 -->
+
+* [A level 2 title](a-level-2-title)
+
 <!-- TOC END -->
 
 ## A level 2 title
