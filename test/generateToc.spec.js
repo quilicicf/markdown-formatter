@@ -1,35 +1,51 @@
-const { resolve: resolvePath } = require('path');
+const _ = require('lodash');
 
-const readFile = require('../lib/readFile');
+const loadDataSets = require('./loadDataSets');
 const { formatFromFile, formatFromString } = require('../index');
 
-const INPUT_DATA_FILE = resolvePath(__dirname, 'test_input.md');
-const OUTPUT_DATA_FILE = resolvePath(__dirname, 'test_output.md');
+const FILE_CONTENTS = {
+  SIMPLE: {
+    INPUT_PATH: '',
+    OUTPUT_PATH: '',
+    INPUT: '',
+    OUTPUT: '',
+  },
+  DEFAULT_TOC_CONF: {
+    INPUT_PATH: '',
+    OUTPUT_PATH: '',
+    INPUT: '',
+    OUTPUT: '',
+  },
+};
 
-describe('Format', () => {
+describe('Format & generate ToC', () => {
+
+  beforeAll(() => _.assign(FILE_CONTENTS, loadDataSets(FILE_CONTENTS)));
+
   test('It should format from string', async () => {
-    const inputMarkdownString = await readFile(INPUT_DATA_FILE);
-    const outputMarkdownString = await readFile(OUTPUT_DATA_FILE);
+    const markdownWithToc = (await formatFromString(FILE_CONTENTS.SIMPLE.INPUT)).contents;
 
-    const markdownWithToc = await formatFromString(inputMarkdownString);
-
-    expect(markdownWithToc).toBe(outputMarkdownString);
+    expect(markdownWithToc).toEqual(FILE_CONTENTS.SIMPLE.OUTPUT);
   });
 
   test('It should format from file', async () => {
-    const outputMarkdownString = await readFile(OUTPUT_DATA_FILE);
+    const markdownWithToc = (await formatFromFile(FILE_CONTENTS.SIMPLE.INPUT_PATH)).contents;
 
-    const markdownWithToc = await formatFromFile(INPUT_DATA_FILE);
-
-    expect(markdownWithToc).toBe(outputMarkdownString);
+    expect(markdownWithToc).toEqual(FILE_CONTENTS.SIMPLE.OUTPUT);
   });
 
   test('It should be idempotent', async () => {
-    const inputMarkdownString = await readFile(INPUT_DATA_FILE);
 
-    const markdownFormattedOnce = await formatFromString(inputMarkdownString);
-    const markdownFormattedTwice = await formatFromString(markdownFormattedOnce);
+    const markdownFormattedOnce = (await formatFromString(FILE_CONTENTS.SIMPLE.INPUT)).contents;
+    const markdownFormattedTwice = (await formatFromString(markdownFormattedOnce)).contents;
 
-    expect(markdownFormattedTwice).toBe(markdownFormattedOnce);
+    expect(markdownFormattedTwice).toEqual(markdownFormattedOnce);
+  });
+
+  test('It should use default ToC configuration when undefined', async () => {
+
+    const formattedMarkdown = (await formatFromString(FILE_CONTENTS.DEFAULT_TOC_CONF.INPUT)).contents;
+
+    expect(formattedMarkdown).toEqual(FILE_CONTENTS.DEFAULT_TOC_CONF.OUTPUT);
   });
 });

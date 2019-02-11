@@ -1,11 +1,7 @@
 const _ = require('lodash');
-const { resolve: resolvePath } = require('path');
 
-const readFile = require('../lib/readFile');
+const loadDataSets = require('./loadDataSets');
 const formatFromString = require('../lib/formatFromString');
-
-const INPUT_FILE_PATH = resolvePath(__dirname, 'test_input.md');
-const OUTPUT_FILE_PATH = resolvePath(__dirname, 'test_output.md');
 
 const TESTS_DATA_SETS = [
   [ 'at document start', 'document start', 0, 0 ],
@@ -17,30 +13,17 @@ const TESTS_DATA_SETS = [
 ];
 
 const FILE_CONTENTS = {
-  INPUTS: {
-    SIMPLE_TESTS: '',
-    TRICKY_TESTS: '',
-  },
-  OUTPUTS: {
-    SIMPLE_TESTS: '',
-    TRICKY_TESTS: '',
+  SIMPLE: {
+    INPUT_PATH: '',
+    OUTPUT_PATH: '',
+    INPUT: '',
+    OUTPUT: '',
   },
 };
 
 describe('Re-locate cursor position', () => {
 
-  beforeAll(async () => {
-    _.assign(FILE_CONTENTS, {
-      INPUTS: {
-        SIMPLE_TESTS: await readFile(INPUT_FILE_PATH),
-        TRICKY_TESTS: '',
-      },
-      OUTPUTS: {
-        SIMPLE_TESTS: await readFile(OUTPUT_FILE_PATH),
-        TRICKY_TESTS: '',
-      },
-    });
-  });
+  beforeAll(() => _.assign(FILE_CONTENTS, loadDataSets(FILE_CONTENTS)));
 
   test.each(TESTS_DATA_SETS)(
     'It should relocate the cursor position from %s to %s',
@@ -48,10 +31,10 @@ describe('Re-locate cursor position', () => {
       const {
         contents: fileContent,
         newCursorPosition,
-      } = await formatFromString(FILE_CONTENTS.INPUTS.SIMPLE_TESTS, inputOffset);
+      } = await formatFromString(FILE_CONTENTS.SIMPLE.INPUT, inputOffset);
 
       expect(fileContent.substring(0, newCursorPosition.offset))
-        .toBe(FILE_CONTENTS.OUTPUTS.SIMPLE_TESTS.substring(0, outputOffset));
+        .toBe(FILE_CONTENTS.SIMPLE.OUTPUT.substring(0, outputOffset));
 
       expect(newCursorPosition.offset).toBe(outputOffset);
     },
