@@ -1,0 +1,5 @@
+{
+  "_DESCRIPTION": "This file is used by https://github.com/quilicicf/Gut to help developers interact with git",
+  "commitMessageSuffixTemplate": "#$ticketNumber",
+  "reviewTool": "github"
+}
