@@ -19,6 +19,9 @@
 
   * [API](#api)
 
+    * [Parameters for formatFromString](#parameters-for-formatfromstring)
+    * [Parameters for formatFromFile](#parameters-for-formatfromfile)
+
 * [How it works](#how-it-works)
 
 * [ToC generation](#toc-generation)
@@ -77,15 +80,32 @@ $
 const { formatFromFile, formatFromString } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const formattedFromString = await formatFromString('**Toto**');
-  process.stdout.write(`Formatted from string:\n${formattedFromString}\n`);
+  const formattedFromString = await formatFromString('**Toto**', 2);
+  process.stdout.write(`Formatted from string:\n${formattedFromString.contents}\n`);
+  process.stdout.write(`With messages:\n${formattedFromString.messages}\n`);
+  process.stdout.write(`New cursor offset:\n${formattedFromString.newCursorOffset}\n`);
+  process.stdout.write(`New cursor position:\n${formattedFromString.newCursorPosition}\n`);
 
   const formattedFromFile = await formatFromFile(filePath);
-  process.stdout.write(`Formatted from file:\n${formattedFromFile}\n`);
+  process.stdout.write(`Formatted from file:\n${formattedFromFile.contents}\n`);
 }
 
 main();
 ```
+
+#### Parameters for formatFromString
+
+|     Parameter    |   Type  | Description                                      |
+| :--------------: | :-----: | ------------------------------------------------ |
+|    __content__   |  String | Markdown string to format                        |
+| __cursorOffset__ | Integer | _Optional_ the cursor offset from document start |
+
+#### Parameters for formatFromFile
+
+|     Parameter    |   Type  | Description                                      |
+| :--------------: | :-----: | ------------------------------------------------ |
+|   __filePath__   |  String | Path to markdown file to format                  |
+| __cursorOffset__ | Integer | _Optional_ the cursor offset from document start |
 
 ## How it works
 
