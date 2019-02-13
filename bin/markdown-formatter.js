@@ -31,14 +31,14 @@ const main = async (args) => {
     replace: shouldReplaceFile,
   } = args;
 
-  const result = inputFile
+  const { contents } = inputFile
     ? await formatFromFile(inputFile)
     : await formatFromString(content);
 
   const fileDestination = shouldReplaceFile ? inputFile : outputFile;
   return fileDestination
-    ? writeFile(fileDestination, result)
-    : Promise.resolve(process.stdout.write(`${result}\n`));
+    ? writeFile(fileDestination, contents)
+    : Promise.resolve(process.stdout.write(`${contents}\n`));
 };
 
 const parseArgs = () => yargs
@@ -69,10 +69,18 @@ const parseArgs = () => yargs
     alias: 'o',
     describe: 'File where the result should be written',
     type: 'string',
+
     coerce (outputFile) {
       if (!isValidPath(outputFile)) { throw Error(`File ${outputFile} is not a valid file path`); }
       return outputFile;
     },
+  })
+  .check((currentArguments) => {
+    if (!currentArguments.content && !currentArguments.file) {
+      throw Error('You must specify one argument of [content, file]');
+    }
+
+    return true;
   })
   .help()
   .version()
