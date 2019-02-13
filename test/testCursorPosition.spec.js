@@ -30,13 +30,13 @@ describe('Re-locate cursor position', () => {
     async (inputLabel, outputLabel, inputOffset, outputOffset) => {
       const {
         contents: fileContent,
-        newCursorPosition,
+        newCursorOffset,
       } = await formatFromString(FILE_CONTENTS.SIMPLE.INPUT, inputOffset);
 
-      expect(fileContent.substring(0, newCursorPosition.offset))
+      expect(fileContent.substring(0, newCursorOffset))
         .toBe(FILE_CONTENTS.SIMPLE.OUTPUT.substring(0, outputOffset));
 
-      expect(newCursorPosition.offset).toBe(outputOffset);
+      expect(newCursorOffset).toBe(outputOffset);
     },
   );
 });
