@@ -12,6 +12,8 @@ const SIMPLE_DATA_SETS = [
   [ 'at the end of a paragraph', 'end of paragraph', 174, 319, { line: 18, column: 36 } ],
   [ 'between paragraphs', 'between the same paragraphs', 14, 14, { line: 2, column: 0 } ],
   [ 'between far-away paragraphs', 'between the same paragraphs', 1537, 2035, { line: 63, column: 0 } ],
+  [ 'just before end', 'just before end', 1587, 2084, { line: 64, column: 48 } ],
+  [ 'at document end', 'document end', 1588, 2084, { line: 64, column: 48 } ],
 ];
 
 const TABLE_DATA_SETS = [
