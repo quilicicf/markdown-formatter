@@ -27,6 +27,10 @@ Come on Amy, I'm a normal bloke, tell me what normal blokes do! You know when gr
 Haha tricky innit?
 ```
 
+```
+This code should still be in fences after formatting
+```
+
 ~~~js
 process.stderr.write('Wrong fences bro!');
 ~~~
@@ -50,3 +54,9 @@ process.stderr.write('Wrong fences bro!');
 1. Saving the world with meals on wheels.
     1. The way I see it, every life is a pile of good things and bad things.…hey.…the good things don't always soften the bad things; but vice-versa the bad things don't necessarily spoil the good things and make them unimportant.
 1. I hate yogurt. It's just stuff with bits in.
+
+A paragraph
+
+
+
+A paragraph very far apart from the previous one
