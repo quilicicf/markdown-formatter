@@ -1,3 +1,5 @@
+* __2.0.1:__
+  * [Better cursor positioning](https://github.com/quilicicf/markdown-formatter/pull/2)
 * __2.0.0:__ 
   * [Compute cursor position](https://github.com/quilicicf/markdown-formatter/pull/1)
   * __Breaking changes:__
