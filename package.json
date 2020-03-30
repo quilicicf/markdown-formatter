@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint '**/*.js'",
-    "test": "npm run lint; jest",
+    "test": "npm run lint && jest",
     "format:readme": "node scripts/formatReadme.js"
   },
   "repository": {
@@ -28,24 +28,24 @@
   "homepage": "https://github.com/quilicicf/markdown-formatter#readme",
   "dependencies": {
     "is-valid-path": "0.1.1",
-    "lodash": "4.17.11",
-    "mdast-util-toc": "3.0.1",
-    "remark": "10.0.1",
-    "remark-parse": "6.0.3",
-    "remark-stringify": "6.0.4",
-    "unified": "7.1.0",
-    "unist-builder": "1.0.3",
-    "yargs": "12.0.5"
+    "lodash": "4.17.15",
+    "mdast-util-toc": "5.0.2",
+    "remark": "12.0.0",
+    "remark-parse": "8.0.0",
+    "remark-stringify": "8.0.0",
+    "unified": "9.0.0",
+    "unist-builder": "2.0.3",
+    "yargs": "15.3.1"
   },
   "devDependencies": {
-    "@talend/eslint-config": "2.0.1",
-    "eslint": "5.12.1",
-    "eslint-config-airbnb": "17.1.0",
-    "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jasmine": "2.10.1",
-    "eslint-plugin-jest": "22.1.2",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "7.12.3",
-    "jest": "23.6.0"
+    "@talend/eslint-config": "2.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jasmine": "4.1.0",
+    "eslint-plugin-jest": "23.8.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.19.0",
+    "jest": "25.2.4"
   }
 }

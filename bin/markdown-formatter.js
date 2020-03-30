@@ -88,8 +88,4 @@ const parseArgs = () => yargs
   .epilogue('For more information, read the manual at https://github.com/quilicicf/markdown-formatter')
   .argv;
 
-try {
-  main(parseArgs());
-} catch (error) {
-  throw error;
-}
+main(parseArgs());
