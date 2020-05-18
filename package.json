@@ -3,6 +3,7 @@
   "version": "2.0.2",
   "description": "A markdown formatter intended for writing specifications",
   "main": "index.js",
+  "types": "index.d.ts",
   "bin": {
     "markdown-format": "./bin/markdown-formatter.js"
   },

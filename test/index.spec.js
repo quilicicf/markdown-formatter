@@ -16,6 +16,23 @@ const FILE_CONTENTS = {
     INPUT: '',
     OUTPUT: '',
   },
+  OVERWRITTEN_STRINGIFY_OPTIONS: {
+    INPUT_PATH: '',
+    OUTPUT_PATH: '',
+    INPUT: '',
+    OUTPUT: '',
+  },
+};
+
+const ALTERNATIVE_STRINGIFY_OPTIONS = {
+  bullet: '-',
+  emphasis: '*',
+  fences: false,
+  gfm: true,
+  listItemIndent: 'tab',
+  rule: '_',
+  ruleSpaces: true,
+  strong: '*',
 };
 
 describe('Format & generate ToC', () => {
@@ -45,5 +62,19 @@ describe('Format & generate ToC', () => {
     const { contents: formattedMarkdown } = await formatFromString(FILE_CONTENTS.DEFAULT_TOC_CONF.INPUT);
 
     expect(formattedMarkdown).toEqual(FILE_CONTENTS.DEFAULT_TOC_CONF.OUTPUT);
+  });
+
+  test('It should overwrite default stringify options when formatting from string', async () => {
+    const inputMarkdown = FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.INPUT;
+    const { contents: formattedMarkdown } = await formatFromString(inputMarkdown, ALTERNATIVE_STRINGIFY_OPTIONS);
+
+    expect(formattedMarkdown).toEqual(FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.OUTPUT);
+  });
+
+  test('It should overwrite default stringify options when formatting from file', async () => {
+    const inputMarkdown = FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.INPUT_PATH;
+    const { contents: formattedMarkdown } = await formatFromFile(inputMarkdown, ALTERNATIVE_STRINGIFY_OPTIONS);
+
+    expect(formattedMarkdown).toEqual(FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.OUTPUT);
   });
 });
