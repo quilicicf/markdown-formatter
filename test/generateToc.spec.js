@@ -23,28 +23,26 @@ describe('Format & generate ToC', () => {
   beforeAll(() => _.assign(FILE_CONTENTS, loadDataSets(FILE_CONTENTS)));
 
   test('It should format from string', async () => {
-    const markdownWithToc = (await formatFromString(FILE_CONTENTS.SIMPLE.INPUT)).contents;
+    const { contents: markdownWithToc } = await formatFromString(FILE_CONTENTS.SIMPLE.INPUT);
 
     expect(markdownWithToc).toEqual(FILE_CONTENTS.SIMPLE.OUTPUT);
   });
 
   test('It should format from file', async () => {
-    const markdownWithToc = (await formatFromFile(FILE_CONTENTS.SIMPLE.INPUT_PATH)).contents;
+    const { contents: markdownWithToc } = await formatFromFile(FILE_CONTENTS.SIMPLE.INPUT_PATH);
 
     expect(markdownWithToc).toEqual(FILE_CONTENTS.SIMPLE.OUTPUT);
   });
 
   test('It should be idempotent', async () => {
-
-    const markdownFormattedOnce = (await formatFromString(FILE_CONTENTS.SIMPLE.INPUT)).contents;
-    const markdownFormattedTwice = (await formatFromString(markdownFormattedOnce)).contents;
+    const { contents: markdownFormattedOnce } = await formatFromString(FILE_CONTENTS.SIMPLE.INPUT);
+    const { contents: markdownFormattedTwice } = await formatFromString(markdownFormattedOnce);
 
     expect(markdownFormattedTwice).toEqual(markdownFormattedOnce);
   });
 
   test('It should use default ToC configuration when undefined', async () => {
-
-    const formattedMarkdown = (await formatFromString(FILE_CONTENTS.DEFAULT_TOC_CONF.INPUT)).contents;
+    const { contents: formattedMarkdown } = await formatFromString(FILE_CONTENTS.DEFAULT_TOC_CONF.INPUT);
 
     expect(formattedMarkdown).toEqual(FILE_CONTENTS.DEFAULT_TOC_CONF.OUTPUT);
   });

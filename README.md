@@ -41,7 +41,6 @@
 
 ### Status
 
-[![Dependency Status](https://david-dm.org/quilicicf/markdown-formatter.svg)](https://david-dm.org/quilicicf/markdown-formatter)
 [![Known Vulnerabilities](https://snyk.io/test/github/quilicicf/markdown-formatter/badge.svg)](https://snyk.io/test/github/quilicicf/markdown-formatter)
 
 ## What it is
@@ -50,9 +49,11 @@ This formatter takes a markdown file and applies formatting rules to it.
 
 It can also add a ToC in you document, see documentation below.
 
-It is supposed to be used as a formatter for your markdown. Feel free to plug it to your favorite editor. I'll do Atom and IntelliJ because they are my editors of choice.
+It is supposed to be used as a formatter for your markdown. Feel free to plug it to your favorite editor.
 
-> Note: obviously, this doc is formatted by dog-fooding the package. Look at npm script `format:readme` in `package.json`.
+There are already plugins for [Atom](https://atom.io/packages/markdown-spec-formatter) and [VSCode](https://marketplace.visualstudio.com/items?itemName=quilicicf.markdown-spec-formatter).
+
+> Note: obviously, this doc is formatted with markdown-formatter. Look at npm script `format:readme` in `package.json`.
 
 ## Use it
 
@@ -77,17 +78,23 @@ $
 ### API
 
 ```js
-const { formatFromFile, formatFromString } = require('@quilicicf/markdown-formatter');
+const { formatFromString } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const formattedFromString = await formatFromString('**Toto**', 2);
-  process.stdout.write(`Formatted from string:\n${formattedFromString.contents}\n`);
-  process.stdout.write(`With messages:\n${formattedFromString.messages}\n`);
-  process.stdout.write(`New cursor offset:\n${formattedFromString.newCursorOffset}\n`);
-  process.stdout.write(`New cursor position:\n${formattedFromString.newCursorPosition}\n`);
+  const { contents, messages } = await formatFromString('**Toto**');
+  process.stdout.write(`Formatted from string:\n${contents}\n`);
+  process.stdout.write(`With messages:\n${messages}\n`);
+}
 
-  const formattedFromFile = await formatFromFile(filePath);
-  process.stdout.write(`Formatted from file:\n${formattedFromFile.contents}\n`);
+main();
+```
+
+```js
+const { formatFromFile } = require('@quilicicf/markdown-formatter');
+
+const main = async () => {
+  const { contents } = await formatFromFile(filePath);
+  process.stdout.write(`Formatted from file:\n${contents}\n`);
 }
 
 main();
@@ -95,17 +102,15 @@ main();
 
 #### Parameters for formatFromString
 
-|     Parameter    |   Type  | Description                                      |
-| :--------------: | :-----: | ------------------------------------------------ |
-|    __content__   |  String | Markdown string to format                        |
-| __cursorOffset__ | Integer | _Optional_ the cursor offset from document start |
+|  Parameter  |  Type  | Description               |
+| :---------: | :----: | ------------------------- |
+| __content__ | String | Markdown string to format |
 
 #### Parameters for formatFromFile
 
-|     Parameter    |   Type  | Description                                      |
-| :--------------: | :-----: | ------------------------------------------------ |
-|   __filePath__   |  String | Path to markdown file to format                  |
-| __cursorOffset__ | Integer | _Optional_ the cursor offset from document start |
+|   Parameter  |  Type  | Description                     |
+| :----------: | :----: | ------------------------------- |
+| __filePath__ | String | Path to markdown file to format |
 
 ## How it works
 
@@ -123,6 +128,7 @@ The ToC is inserted in the HTML comments described below and can be configured w
 <!-- TOC START min:2 max:4 -->
 
 > Anything between those two HTML comments will be replaced by the auto-generated ToC.
+> The TOC parameters are optional, see default values in the table below
 
 <!-- TOC END -->
 ```
@@ -136,6 +142,6 @@ The ToC is inserted in the HTML comments described below and can be configured w
 
 ## Roadmap
 
-* [ ] Create atom formatter
-* [ ] Create IntelliJ formatter
-* [ ] Add dot graphs capabilities
+* [x] Create atom formatter
+* [x] Create IntelliJ formatter
+* [ ] Add dot graphs capabilities?
