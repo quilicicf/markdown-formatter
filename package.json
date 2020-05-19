@@ -32,7 +32,7 @@
     "lodash": "4.17.15",
     "mdast-util-toc": "5.0.3",
     "remark": "12.0.0",
-    "remark-parse": "8.0.0",
+    "remark-parse": "8.0.2",
     "remark-stringify": "8.0.0",
     "unified": "9.0.0",
     "unist-builder": "2.0.3",
@@ -40,13 +40,13 @@
   },
   "devDependencies": {
     "@talend/eslint-config": "2.1.0",
-    "eslint": "6.8.0",
+    "eslint": "7.0.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-plugin-import": "2.20.2",
-    "eslint-plugin-jasmine": "4.1.0",
-    "eslint-plugin-jest": "23.8.2",
+    "eslint-plugin-jasmine": "4.1.1",
+    "eslint-plugin-jest": "23.13.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.19.0",
-    "jest": "25.2.4"
+    "eslint-plugin-react": "7.20.0",
+    "jest": "26.0.1"
   }
 }
