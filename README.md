@@ -41,6 +41,7 @@
 
 ### Status
 
+[![Dependencies freshness](https://img.shields.io/depfu/quilicicf/markdown-formatter)](https://depfu.com/repos/github/quilicicf/markdown-formatter)
 [![Known Vulnerabilities](https://snyk.io/test/github/quilicicf/markdown-formatter/badge.svg)](https://snyk.io/test/github/quilicicf/markdown-formatter)
 
 ## What it is
@@ -102,15 +103,17 @@ main();
 
 #### Parameters for formatFromString
 
-|  Parameter  |  Type  | Description               |
-| :---------: | :----: | ------------------------- |
-| __content__ | String | Markdown string to format |
+|       Parameter      |  Type  | Description                                                                                                                          |
+| :------------------: | :----: | ------------------------------------------------------------------------------------------------------------------------------------ |
+|      __content__     | String | Markdown string to format                                                                                                            |
+| __stringifyOptions__ | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify` |
 
 #### Parameters for formatFromFile
 
-|   Parameter  |  Type  | Description                     |
-| :----------: | :----: | ------------------------------- |
-| __filePath__ | String | Path to markdown file to format |
+|       Parameter      |  Type  | Description                                                                                                                          |
+| :------------------: | :----: | ------------------------------------------------------------------------------------------------------------------------------------ |
+|     __filePath__     | String | Path to markdown file to format                                                                                                      |
+| __stringifyOptions__ | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify` |
 
 ## How it works
 
