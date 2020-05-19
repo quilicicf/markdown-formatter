@@ -43,6 +43,7 @@
 
 [![Dependencies freshness](https://img.shields.io/depfu/quilicicf/markdown-formatter)](https://depfu.com/repos/github/quilicicf/markdown-formatter)
 [![Known Vulnerabilities](https://snyk.io/test/github/quilicicf/markdown-formatter/badge.svg)](https://snyk.io/test/github/quilicicf/markdown-formatter)
+[![Build status](https://travis-ci.org/quilicicf/markdown-formatter.svg?branch=master)](https://travis-ci.org/quilicicf/markdown-formatter/builds)
 
 ## What it is
 
