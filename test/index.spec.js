@@ -93,6 +93,13 @@ describe('Format & generate ToC', () => {
     expect(formattedTwice).toEqual(formattedOnce);
   });
 
+  test('It should remove watermark at top if watermark type is none', async () => {
+    const { remove_watermark_top: { input, output } } = FILE_CONTENTS;
+    const { contents: formattedMarkdown } = await formatFromString(input);
+
+    expect(formattedMarkdown).toEqual(output);
+  });
+
   test('It should add watermark in ToC', async () => {
     const { watermark_toc: { input, output } } = FILE_CONTENTS;
     const { contents: formattedMarkdown } = await formatFromString(input, { watermark: 'toc' });
