@@ -8,11 +8,11 @@ type PartialMarkdownFormatterOptions = Partial<MarkdownFormatterOptions>
 
 export function formatFromString(
   sourceMarkdownString: string,
-  markdownFormatterOptions: PartialMarkdownFormatterOptions,
+  markdownFormatterOptions?: PartialMarkdownFormatterOptions,
   stringifyOptions?: PartialRemarkStringifyOptions,
 ): string;
 export function formatFromFile(
   sourceMarkdownFilePath: string,
-  markdownFormatterOptions: PartialMarkdownFormatterOptions,
+  markdownFormatterOptions?: PartialMarkdownFormatterOptions,
   stringifyOptions?: PartialRemarkStringifyOptions,
 ): string;
