@@ -1,0 +1,8 @@
+{
+  "markdownFormatterOptions": {
+    "watermark": "top"
+  },
+  "stringifyOptions": {
+    "gfm": true
+  }
+}
