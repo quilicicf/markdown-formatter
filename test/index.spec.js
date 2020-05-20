@@ -79,7 +79,16 @@ describe('Format & generate ToC', () => {
   test('It should not add watermark at top twice', async () => {
     const { watermark_top: { input } } = FILE_CONTENTS;
     const { contents: formattedOnce } = await formatFromString(input, { watermark: 'top' });
-    const { contents: formattedTwice } = await formatFromString(formattedOnce, { watermark: 'top' });
+    const { contents: formattedTwice, messages } = await formatFromString(formattedOnce, { watermark: 'top' });
+
+    expect(messages).toHaveLength(2);
+    const [
+      { message: firstMessage },
+      { message: secondMessage },
+    ] = messages;
+
+    expect(firstMessage).toContain('No ToC start found');
+    expect(secondMessage).toContain('Watermark found');
 
     expect(formattedTwice).toEqual(formattedOnce);
   });

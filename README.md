@@ -19,8 +19,9 @@
 
   * [API](#api)
 
-    * [Parameters for formatFromString](#parameters-for-formatfromstring)
-    * [Parameters for formatFromFile](#parameters-for-formatfromfile)
+    * [formatFromString](#formatfromstring)
+    * [formatFromFile](#formatfromfile)
+    * [Configuration defaults and behavior](#configuration-defaults-and-behavior)
 
 * [How it works](#how-it-works)
 
@@ -49,7 +50,7 @@
 
 This formatter takes a markdown file and applies formatting rules to it.
 
-It can also add a ToC in you document, see documentation below.
+It can also [add a ToC in your document](#toc-generation).
 
 It is supposed to be used as a formatter for your markdown. Feel free to plug it to your favorite editor.
 
@@ -64,7 +65,7 @@ There are already plugins for [Atom](https://atom.io/packages/markdown-spec-form
 ```shell
 $ npm install -g @quilicicf/markdown-formatter
 $ markdown-format --content '**Toto**'
-  > __Toto__
+> __Toto__
 $
 ```
 
@@ -79,11 +80,21 @@ $
 
 ### API
 
+Both methods return a [VFile](https://github.com/vfile/vfile#api).
+
+#### formatFromString
+
+##### Usage
+
 ```js
 const { formatFromString } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const { contents, messages } = await formatFromString('**Toto**');
+  const { contents, messages } = await formatFromString(
+    '**Toto**', // Markdown string
+    { watermark: 'top' }, // Markdown-formatter options
+    { gfm: false }, // Stringify options
+  );
   process.stdout.write(`Formatted from string:\n${contents}\n`);
   process.stdout.write(`With messages:\n${messages}\n`);
 }
@@ -91,30 +102,46 @@ const main = async () => {
 main();
 ```
 
+##### Options
+
+|           Parameter          |  Type  | Description                                                                                                                                                                                                                   |
+| :--------------------------: | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|          __content__         | String | Markdown string to format                                                                                                                                                                                                     |
+| __markdownFormatterOptions__ | Object | [Markdown formatter options](./index.d.ts). Don't pass it or pass `{}` to use the [defaults](#configuration-defaults-and-behavior).                                                                                           |
+|     __stringifyOptions__     | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify`. Don't pass it or pass `{}` to use the [defaults](#configuration-defaults-and-behavior). |
+
+#### formatFromFile
+
+##### Usage
+
 ```js
 const { formatFromFile } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const { contents } = await formatFromFile(filePath);
+  const { contents } = await formatFromFile(
+    filePath, // Markdown string
+    { watermark: 'top' }, // Markdown-formatter options
+    { gfm: false }, // Stringify options
+  );
   process.stdout.write(`Formatted from file:\n${contents}\n`);
 }
 
 main();
 ```
 
-#### Parameters for formatFromString
+##### Options
 
-|       Parameter      |  Type  | Description                                                                                                                          |
-| :------------------: | :----: | ------------------------------------------------------------------------------------------------------------------------------------ |
-|      __content__     | String | Markdown string to format                                                                                                            |
-| __stringifyOptions__ | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify` |
+|           Parameter          |  Type  | Description                                                                                                                                                                                                                   |
+| :--------------------------: | :----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|         __filePath__         | String | Path to markdown file to format                                                                                                                                                                                               |
+| __markdownFormatterOptions__ | Object | [Markdown formatter options](./index.d.ts). Don't pass it or pass `{}` to use the [defaults](#configuration-defaults-and-behavior).                                                                                           |
+|     __stringifyOptions__     | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify`. Don't pass it or pass `{}` to use the [defaults](#configuration-defaults-and-behavior). |
 
-#### Parameters for formatFromFile
+#### Configuration defaults and behavior
 
-|       Parameter      |  Type  | Description                                                                                                                          |
-| :------------------: | :----: | ------------------------------------------------------------------------------------------------------------------------------------ |
-|     __filePath__     | String | Path to markdown file to format                                                                                                      |
-| __stringifyOptions__ | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify` |
+Defaults for `markdownFormatterOptions` and `stringifyOptions` are available in the [constants file](./lib/constants.js).
+
+For `stringifyOptions`, any attribute not present in the constants file defaults to the default value from the [remark-stringify plugin](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api).
 
 ## How it works
 
