@@ -17,13 +17,17 @@
 
   * [CLI](#cli)
 
-    * [Options](#options)
+    * [CLI options](#cli-options)
 
   * [API](#api)
 
     * [formatFromString](#formatfromstring)
     * [formatFromFile](#formatfromfile)
-    * [Configuration defaults and behavior](#configuration-defaults-and-behavior)
+
+  * [Options](#options)
+
+    * [markdownFormatterOptions](#markdownformatteroptions)
+    * [stringifyOptions](#stringifyoptions)
 
 * [How it works](#how-it-works)
 
@@ -71,15 +75,15 @@ $ markdown-format --content '**Toto**'
 $
 ```
 
-#### Options
+#### CLI options
 
-|         Option        | Alias | Type    | Description                                                                                                                                                                                                       |
-| :-------------------: | :---: | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|      __content__      |   c   | String  | Markdown string to format. Mutually exclusive with `file`                                                                                                                                                         |
-|        __file__       |   f   | String  | File path to Markdown file to format. Mutually exclusive with `content`                                                                                                                                           |
-|    __output-file__    |   o   | String  | When specified, creates/overwrites a file with the formatted markdown                                                                                                                                             |
-|      __replace__      |   r   | Boolean | Replaces the `file` content in-place. Mutually exclusive with `content` & `output-file`. Only valid when `file` is set                                                                                            |
-| __use-configuration__ |   u   | String  | File path to the configuration file for markdown-formatter. See the expected file structure in [the example](./configurationExample.json). See also [the options behavior](#configuration-defaults-and-behavior). |
+|         Option        | Alias | Type    | Description                                                                                                                                                                                                                                                                           |
+| :-------------------: | :---: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      __content__      |   c   | String  | Markdown string to format. Mutually exclusive with `file`                                                                                                                                                                                                                             |
+|        __file__       |   f   | String  | File path to Markdown file to format. Mutually exclusive with `content`                                                                                                                                                                                                               |
+|    __output-file__    |   o   | String  | When specified, creates/overwrites a file with the formatted markdown                                                                                                                                                                                                                 |
+|      __replace__      |   r   | Boolean | Replaces the `file` content in-place. Mutually exclusive with `content` & `output-file`. Only valid when `file` is set                                                                                                                                                                |
+| __use-configuration__ |   u   | String  | File path to the configuration file for markdown-formatter. The configuration file can define [markdownFormatterOptions](#markdownformatteroptions), [stringifyOptions](#stringifyoptions) or both ([example](./configurationExample.json)). [More information on options](#options). |
 
 ### API
 
@@ -105,13 +109,13 @@ const main = async () => {
 main();
 ```
 
-##### Options
+##### formatFromString options
 
-|           Parameter          |  Type  | Description                                                                                                                                                                                                     |
-| :--------------------------: | :----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|          __content__         | String | Markdown string to format                                                                                                                                                                                       |
-| __markdownFormatterOptions__ | Object | [Markdown formatter options](./index.d.ts), see [the documentation on options](#configuration-defaults-and-behavior).                                                                                           |
-|     __stringifyOptions__     | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify`, see [the documentation on options](#configuration-defaults-and-behavior). |
+|           Parameter          |  Type  | Description                                                                                     |
+| :--------------------------: | :----: | ----------------------------------------------------------------------------------------------- |
+|          __content__         | String | Markdown string to format                                                                       |
+| __markdownFormatterOptions__ | Object | The [markdownFormatterOptions](#markdownformatteroptions). Set to `{}` or omit to use defaults. |
+|     __stringifyOptions__     | Object | The [stringifyOptions](#stringifyoptions). Set to `{}` or omit to use defaults.                 |
 
 #### formatFromFile
 
@@ -132,21 +136,47 @@ const main = async () => {
 main();
 ```
 
-##### Options
+##### formatFromFile options
 
-|           Parameter          |  Type  | Description                                                                                                                                                                                                     |
-| :--------------------------: | :----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|         __filePath__         | String | Path to markdown file to format                                                                                                                                                                                 |
-| __markdownFormatterOptions__ | Object | [Markdown formatter options](./index.d.ts), see [the documentation on options](#configuration-defaults-and-behavior).                                                                                           |
-|     __stringifyOptions__     | Object | [Stringification options](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api) passed to `remark-stringify`, see [the documentation on options](#configuration-defaults-and-behavior). |
+|           Parameter          |  Type  | Description                                                                                     |
+| :--------------------------: | :----: | ----------------------------------------------------------------------------------------------- |
+|         __filePath__         | String | Path to markdown file to format                                                                 |
+| __markdownFormatterOptions__ | Object | The [markdownFormatterOptions](#markdownformatteroptions). Set to `{}` or omit to use defaults. |
+|     __stringifyOptions__     | Object | The [stringifyOptions](#stringifyoptions). Set to `{}` or omit to use defaults.                 |
 
-#### Configuration defaults and behavior
+### Options
 
-Passing configurations will overwrite the defaults values for the defined properties.
+This tool accepts two different configuration objects, `markdownFormatterOptions` and `stringifyOptions`.
 
-Using `{}` for a configuration tells `markdown-formatter` to use the defaults, available in the [constants file](./lib/constants.js).
+The first one configures the plugin itself, the second one configures the formatting feature only and is purely mapped to the options of the underlying module used: [remark-stringify](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify).
 
-For `stringifyOptions`, any attribute not present in the constants file defaults to the default value from the [remark-stringify plugin](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api).
+You can pass values for these two using the [CLI](#cli) and [API](#api).
+
+#### markdownFormatterOptions
+
+The `markdownFormatterOptions` structure is defined by this plugin in the [TypeScript module declaration](./index.d.ts) (in the interface `MarkdownFormatterOptions`).
+
+The default values for the fields are in [the constants file](./lib/constants.js) (in property `DEFAULT_MARKDOWN_FORMATTER_OPTIONS`).
+
+Each field present in the configuration you pass to `markdown-formatter` will overwrite the default value for this field.
+
+Examples: 
+
+* pass `{}` to use all the default values  
+* pass `{ watermark: 'top' }` to overwrite the property `watermark` and use defaults for other properties
+
+#### stringifyOptions
+
+The `stringifyOptions` structure is defined by the dependency [remark-stringify](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api).
+
+The default values for the fields are in [the constants file](./lib/constants.js) (in property `DEFAULT_STRINGIFY_OPTIONS`). Any field not present in this repository's defaults will use `remark-stringify`'s default value instead.
+
+Each field present in the configuration you pass to `markdown-formatter` will overwrite the default value for this field.
+
+Examples: 
+
+* pass `{}` to use all the default values  
+* pass `{ gfm: false }` to overwrite the property `gfm` and use defaults for other properties
 
 ## How it works
 
