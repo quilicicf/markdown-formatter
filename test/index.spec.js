@@ -66,14 +66,14 @@ describe('Format & generate ToC', () => {
 
   test('It should overwrite default stringify options when formatting from string', async () => {
     const inputMarkdown = FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.INPUT;
-    const { contents: formattedMarkdown } = await formatFromString(inputMarkdown, ALTERNATIVE_STRINGIFY_OPTIONS);
+    const { contents: formattedMarkdown } = await formatFromString(inputMarkdown, {}, ALTERNATIVE_STRINGIFY_OPTIONS);
 
     expect(formattedMarkdown).toEqual(FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.OUTPUT);
   });
 
   test('It should overwrite default stringify options when formatting from file', async () => {
     const inputMarkdown = FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.INPUT_PATH;
-    const { contents: formattedMarkdown } = await formatFromFile(inputMarkdown, ALTERNATIVE_STRINGIFY_OPTIONS);
+    const { contents: formattedMarkdown } = await formatFromFile(inputMarkdown, {}, ALTERNATIVE_STRINGIFY_OPTIONS);
 
     expect(formattedMarkdown).toEqual(FILE_CONTENTS.OVERWRITTEN_STRINGIFY_OPTIONS.OUTPUT);
   });

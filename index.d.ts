@@ -1,5 +1,18 @@
-import { PartialRemarkStringifyOptions } from 'remark-stringify/types/index';
+import { PartialRemarkStringifyOptions } from 'remark-stringify';
 
-export function formatFromString(sourceMarkdownString: string, stringifyOptions?: PartialRemarkStringifyOptions): string;
+interface MarkdownFormatterOptions {
+  watermark: 'none' | 'top' | 'toc'
+}
 
-export function formatFromFile(sourceMarkdownFilePath: string, stringifyOptions?: PartialRemarkStringifyOptions): string;
+type PartialMarkdownFormatterOptions = Partial<MarkdownFormatterOptions>
+
+export function formatFromString(
+  sourceMarkdownString: string,
+  markdownFormatterOptions: PartialMarkdownFormatterOptions,
+  stringifyOptions?: PartialRemarkStringifyOptions,
+): string;
+export function formatFromFile(
+  sourceMarkdownFilePath: string,
+  markdownFormatterOptions: PartialMarkdownFormatterOptions,
+  stringifyOptions?: PartialRemarkStringifyOptions,
+): string;
