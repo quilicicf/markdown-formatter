@@ -1,3 +1,5 @@
+<!-- Formatted by https://github.com/quilicicf/markdown-formatter -->
+
 # markdown-formatter
 
 > A markdown formatter intended for writing specifications
@@ -15,12 +17,17 @@
 
   * [CLI](#cli)
 
-    * [Options](#options)
+    * [CLI options](#cli-options)
 
   * [API](#api)
 
-    * [Parameters for formatFromString](#parameters-for-formatfromstring)
-    * [Parameters for formatFromFile](#parameters-for-formatfromfile)
+    * [formatFromString](#formatfromstring)
+    * [formatFromFile](#formatfromfile)
+
+  * [Options](#options)
+
+    * [markdownFormatterOptions](#markdownformatteroptions)
+    * [stringifyOptions](#stringifyoptions)
 
 * [How it works](#how-it-works)
 
@@ -41,18 +48,21 @@
 
 ### Status
 
-[![Dependency Status](https://david-dm.org/quilicicf/markdown-formatter.svg)](https://david-dm.org/quilicicf/markdown-formatter)
+[![Dependencies freshness](https://img.shields.io/depfu/quilicicf/markdown-formatter)](https://depfu.com/repos/github/quilicicf/markdown-formatter)
 [![Known Vulnerabilities](https://snyk.io/test/github/quilicicf/markdown-formatter/badge.svg)](https://snyk.io/test/github/quilicicf/markdown-formatter)
+[![Build status](https://travis-ci.org/quilicicf/markdown-formatter.svg?branch=master)](https://travis-ci.org/quilicicf/markdown-formatter/builds)
 
 ## What it is
 
 This formatter takes a markdown file and applies formatting rules to it.
 
-It can also add a ToC in you document, see documentation below.
+It can also [add a ToC in your document](#toc-generation).
 
-It is supposed to be used as a formatter for your markdown. Feel free to plug it to your favorite editor. I'll do Atom and IntelliJ because they are my editors of choice.
+It is supposed to be used as a formatter for your markdown. Feel free to plug it to your favorite editor.
 
-> Note: obviously, this doc is formatted by dog-fooding the package. Look at npm script `format:readme` in `package.json`.
+There are already plugins for [Atom](https://atom.io/packages/markdown-spec-formatter) and [VSCode](https://marketplace.visualstudio.com/items?itemName=quilicicf.markdown-spec-formatter).
+
+> Note: obviously, this doc is formatted with markdown-formatter. Look at npm script `format:readme` in `package.json`.
 
 ## Use it
 
@@ -61,51 +71,112 @@ It is supposed to be used as a formatter for your markdown. Feel free to plug it
 ```shell
 $ npm install -g @quilicicf/markdown-formatter
 $ markdown-format --content '**Toto**'
-  > __Toto__
+> __Toto__
 $
 ```
 
-#### Options
+#### CLI options
 
-|      Option     | Alias | Type    | Description                                                                                                            |
-| :-------------: | :---: | ------- | ---------------------------------------------------------------------------------------------------------------------- |
-|   __content__   |   c   | String  | Markdown string to format. Mutually exclusive with `file`                                                              |
-|     __file__    |   f   | String  | File path to Markdown file to format. Mutually exclusive with `content`                                                |
-| __output-file__ |   o   | String  | When specified, creates/overwrites a file with the formatted markdown                                                  |
-|   __replace__   |   r   | Boolean | Replaces the `file` content in-place. Mutually exclusive with `content` & `output-file`. Only valid when `file` is set |
+|         Option        | Alias | Type    | Description                                                                                                                                                                                                                                                                           |
+| :-------------------: | :---: | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      __content__      |   c   | String  | Markdown string to format. Mutually exclusive with `file`                                                                                                                                                                                                                             |
+|        __file__       |   f   | String  | File path to Markdown file to format. Mutually exclusive with `content`                                                                                                                                                                                                               |
+|    __output-file__    |   o   | String  | When specified, creates/overwrites a file with the formatted markdown                                                                                                                                                                                                                 |
+|      __replace__      |   r   | Boolean | Replaces the `file` content in-place. Mutually exclusive with `content` & `output-file`. Only valid when `file` is set                                                                                                                                                                |
+| __use-configuration__ |   u   | String  | File path to the configuration file for markdown-formatter. The configuration file can define [markdownFormatterOptions](#markdownformatteroptions), [stringifyOptions](#stringifyoptions) or both ([example](./configurationExample.json)). [More information on options](#options). |
 
 ### API
 
+Both methods return a [VFile](https://github.com/vfile/vfile#api).
+
+#### formatFromString
+
+##### Usage
+
 ```js
-const { formatFromFile, formatFromString } = require('@quilicicf/markdown-formatter');
+const { formatFromString } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const formattedFromString = await formatFromString('**Toto**', 2);
-  process.stdout.write(`Formatted from string:\n${formattedFromString.contents}\n`);
-  process.stdout.write(`With messages:\n${formattedFromString.messages}\n`);
-  process.stdout.write(`New cursor offset:\n${formattedFromString.newCursorOffset}\n`);
-  process.stdout.write(`New cursor position:\n${formattedFromString.newCursorPosition}\n`);
-
-  const formattedFromFile = await formatFromFile(filePath);
-  process.stdout.write(`Formatted from file:\n${formattedFromFile.contents}\n`);
+  const { contents, messages } = await formatFromString(
+    '**Toto**', // Markdown string
+    { watermark: 'top' }, // Markdown-formatter options
+    { gfm: false }, // Stringify options
+  );
+  process.stdout.write(`Formatted from string:\n${contents}\n`);
+  process.stdout.write(`With messages:\n${messages}\n`);
 }
 
 main();
 ```
 
-#### Parameters for formatFromString
+##### formatFromString options
 
-|     Parameter    |   Type  | Description                                      |
-| :--------------: | :-----: | ------------------------------------------------ |
-|    __content__   |  String | Markdown string to format                        |
-| __cursorOffset__ | Integer | _Optional_ the cursor offset from document start |
+|           Parameter          |  Type  | Description                                                                                     |
+| :--------------------------: | :----: | ----------------------------------------------------------------------------------------------- |
+|          __content__         | String | Markdown string to format                                                                       |
+| __markdownFormatterOptions__ | Object | The [markdownFormatterOptions](#markdownformatteroptions). Set to `{}` or omit to use defaults. |
+|     __stringifyOptions__     | Object | The [stringifyOptions](#stringifyoptions). Set to `{}` or omit to use defaults.                 |
 
-#### Parameters for formatFromFile
+#### formatFromFile
 
-|     Parameter    |   Type  | Description                                      |
-| :--------------: | :-----: | ------------------------------------------------ |
-|   __filePath__   |  String | Path to markdown file to format                  |
-| __cursorOffset__ | Integer | _Optional_ the cursor offset from document start |
+##### Usage
+
+```js
+const { formatFromFile } = require('@quilicicf/markdown-formatter');
+
+const main = async () => {
+  const { contents } = await formatFromFile(
+    filePath, // Markdown string
+    { watermark: 'top' }, // Markdown-formatter options
+    { gfm: false }, // Stringify options
+  );
+  process.stdout.write(`Formatted from file:\n${contents}\n`);
+}
+
+main();
+```
+
+##### formatFromFile options
+
+|           Parameter          |  Type  | Description                                                                                     |
+| :--------------------------: | :----: | ----------------------------------------------------------------------------------------------- |
+|         __filePath__         | String | Path to markdown file to format                                                                 |
+| __markdownFormatterOptions__ | Object | The [markdownFormatterOptions](#markdownformatteroptions). Set to `{}` or omit to use defaults. |
+|     __stringifyOptions__     | Object | The [stringifyOptions](#stringifyoptions). Set to `{}` or omit to use defaults.                 |
+
+### Options
+
+This tool accepts two different configuration objects, `markdownFormatterOptions` and `stringifyOptions`.
+
+The first one configures the plugin itself, the second one configures the formatting feature only and is purely mapped to the options of the underlying module used: [remark-stringify](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify).
+
+You can pass values for these two using the [CLI](#cli) and [API](#api).
+
+#### markdownFormatterOptions
+
+The `markdownFormatterOptions` structure is defined by this plugin in the [TypeScript module declaration](./index.d.ts) (in the interface `MarkdownFormatterOptions`).
+
+The default values for the fields are in [the constants file](./lib/constants.js) (in property `DEFAULT_MARKDOWN_FORMATTER_OPTIONS`).
+
+Each field present in the configuration you pass to `markdown-formatter` will overwrite the default value for this field.
+
+Examples: 
+
+* pass `{}` to use all the default values  
+* pass `{ watermark: 'top' }` to overwrite the property `watermark` and use defaults for other properties
+
+#### stringifyOptions
+
+The `stringifyOptions` structure is defined by the dependency [remark-stringify](https://github.com/remarkjs/remark/tree/master/packages/remark-stringify#api).
+
+The default values for the fields are in [the constants file](./lib/constants.js) (in property `DEFAULT_STRINGIFY_OPTIONS`). Any field not present in this repository's defaults will use `remark-stringify`'s default value instead.
+
+Each field present in the configuration you pass to `markdown-formatter` will overwrite the default value for this field.
+
+Examples: 
+
+* pass `{}` to use all the default values  
+* pass `{ gfm: false }` to overwrite the property `gfm` and use defaults for other properties
 
 ## How it works
 
@@ -123,6 +194,7 @@ The ToC is inserted in the HTML comments described below and can be configured w
 <!-- TOC START min:2 max:4 -->
 
 > Anything between those two HTML comments will be replaced by the auto-generated ToC.
+> The TOC parameters are optional, see default values in the table below
 
 <!-- TOC END -->
 ```
@@ -136,6 +208,6 @@ The ToC is inserted in the HTML comments described below and can be configured w
 
 ## Roadmap
 
-* [ ] Create atom formatter
-* [ ] Create IntelliJ formatter
-* [ ] Add dot graphs capabilities
+* [x] Create atom formatter
+* [x] Create IntelliJ formatter
+* [ ] Add dot graphs capabilities?
