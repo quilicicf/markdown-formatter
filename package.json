@@ -10,7 +10,7 @@
   "scripts": {
     "lint": "eslint '**/*.js'",
     "test": "npm run lint && jest",
-    "format:readme": "node scripts/formatReadme.js"
+    "format:readme": "node bin/markdown-formatter.js -f README.md -r -u configurationExample.json"
   },
   "repository": {
     "type": "git",
