@@ -10,7 +10,9 @@
   "scripts": {
     "lint": "eslint '**/*.js'",
     "test": "npm run lint && jest",
-    "format:readme": "node bin/markdown-formatter.js -f README.md -r -u configurationExample.json"
+    "format:readme": "node bin/markdown-formatter.js -f README.md -r -u configurationExample.json",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -36,7 +38,8 @@
     "remark-stringify": "8.0.0",
     "unified": "9.0.0",
     "unist-builder": "2.0.3",
-    "yargs": "15.3.1"
+    "yargs": "15.3.1",
+    "snyk": "^1.338.0"
   },
   "devDependencies": {
     "@jest/globals": "26.0.1",
@@ -49,5 +52,6 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.20.0",
     "jest": "26.0.1"
-  }
+  },
+  "snyk": true
 }
