@@ -42,16 +42,16 @@
     "snyk": "^1.349.0"
   },
   "devDependencies": {
-    "@jest/globals": "26.0.1",
+    "@jest/globals": "26.1.0",
     "@talend/eslint-config": "2.1.0",
     "eslint": "7.3.1",
-    "eslint-config-airbnb": "18.1.0",
-    "eslint-plugin-import": "2.21.2",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-plugin-import": "2.22.0",
     "eslint-plugin-jasmine": "4.1.1",
     "eslint-plugin-jest": "23.17.1",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.20.0",
-    "jest": "26.0.1"
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-react": "7.20.1",
+    "jest": "26.1.0"
   },
   "snyk": true
 }
