@@ -38,7 +38,7 @@
     "remark-stringify": "8.1.0",
     "unified": "9.0.0",
     "unist-builder": "2.0.3",
-    "yargs": "15.4.0",
+    "yargs": "15.4.1",
     "snyk": "^1.360.0"
   },
   "devDependencies": {
