@@ -39,7 +39,7 @@
     "unified": "9.0.0",
     "unist-builder": "2.0.3",
     "yargs": "15.4.1",
-    "snyk": "^1.362.1"
+    "snyk": "^1.364.2"
   },
   "devDependencies": {
     "@jest/globals": "26.1.0",
