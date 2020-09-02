@@ -1,5 +1,7 @@
 # CHANGELOG
 
+* __3.0.1:__
+  * :arrow_up: Lib upgrades
 * __3.0.0:__
   * :new: Allow overwriting the stringification options (issue [#5](https://github.com/quilicicf/markdown-formatter/issues/5))
   * :new: Optionally add a watermark with a link to this repository
