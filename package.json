@@ -33,16 +33,17 @@
     "is-valid-path": "0.1.1",
     "lodash": "4.17.20",
     "mdast-util-toc": "5.0.3",
-    "remark": "12.0.1",
-    "remark-parse": "8.0.3",
-    "remark-stringify": "8.1.1",
+    "remark": "13.0.0",
+    "remark-gfm": "1.0.0",
+    "remark-parse": "9.0.0",
+    "remark-stringify": "9.0.0",
+    "snyk": "^1.413.5",
     "unified": "9.2.0",
     "unist-builder": "2.0.3",
-    "yargs": "16.0.3",
-    "snyk": "^1.413.3"
+    "yargs": "16.0.3"
   },
   "devDependencies": {
-    "@jest/globals": "26.5.2",
+    "@jest/globals": "26.5.3",
     "@talend/eslint-config": "2.1.0",
     "eslint": "7.11.0",
     "eslint-config-airbnb": "18.2.0",
@@ -51,7 +52,7 @@
     "eslint-plugin-jest": "24.1.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "7.21.4",
-    "jest": "26.5.2"
+    "jest": "26.5.3"
   },
   "snyk": true
 }
