@@ -35,7 +35,7 @@
     "mdast-util-toc": "5.0.3",
     "remark": "12.0.1",
     "remark-parse": "8.0.3",
-    "remark-stringify": "8.1.1",
+    "remark-stringify": "9.0.0",
     "unified": "9.2.0",
     "unist-builder": "2.0.3",
     "yargs": "16.0.3",
