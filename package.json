@@ -44,13 +44,13 @@
   },
   "devDependencies": {
     "@jest/globals": "26.6.1",
-    "@talend/eslint-config": "2.1.0",
-    "eslint": "7.12.0",
+    "@talend/eslint-config": "3.0.0",
+    "eslint": "7.12.1",
     "eslint-config-airbnb": "18.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jasmine": "4.1.1",
     "eslint-plugin-jest": "24.1.0",
-    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.21.5",
     "jest": "26.6.1"
   },
