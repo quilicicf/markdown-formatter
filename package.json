@@ -40,7 +40,7 @@
     "snyk": "^1.425.4",
     "unified": "9.2.0",
     "unist-builder": "2.0.3",
-    "yargs": "16.1.0"
+    "yargs": "16.1.1"
   },
   "devDependencies": {
     "@jest/globals": "26.6.2",
