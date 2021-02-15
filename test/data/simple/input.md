@@ -31,6 +31,8 @@ Haha tricky innit?
 This code should still be in fences after formatting
 ```
 
+This `part-here` should not be changed
+
 ~~~js
 process.stderr.write('Wrong fences bro!');
 ~~~
