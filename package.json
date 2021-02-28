@@ -38,7 +38,7 @@
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
     "snyk": "^1.454.0",
-    "unified": "9.2.0",
+    "unified": "9.2.1",
     "unist-builder": "2.0.3",
     "yargs": "16.2.0"
   },
