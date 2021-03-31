@@ -1,5 +1,7 @@
 # CHANGELOG
 
+* __3.0.4:__
+  * :lock: Lib upgrades
 * __3.0.3:__
   * :arrow_up: Lib upgrades
 * __3.0.2:__
