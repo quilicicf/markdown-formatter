@@ -1,6 +1,6 @@
 {
   "name": "@quilicicf/markdown-formatter",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "A markdown formatter intended for writing specifications",
   "main": "index.js",
   "types": "index.d.ts",
