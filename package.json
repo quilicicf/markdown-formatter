@@ -4,12 +4,14 @@
   "description": "A markdown formatter intended for writing specifications",
   "main": "index.js",
   "types": "index.d.ts",
+  "type": "module",
   "bin": {
     "markdown-format": "bin/markdown-formatter.js"
   },
   "scripts": {
     "lint": "eslint '**/*.js'",
-    "test": "npm run lint && jest",
+    "test": "npm run lint && npm run test-only",
+    "test-only": "node --experimental-vm-modules node_modules/.bin/jest",
     "format:readme": "node bin/markdown-formatter.js -f README.md -r -u configurationExample.json",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
@@ -32,15 +34,15 @@
   "dependencies": {
     "is-valid-path": "0.1.1",
     "lodash": "4.17.21",
-    "mdast-util-toc": "5.1.0",
+    "mdast-util-toc": "6.0.0",
     "remark": "13.0.0",
     "remark-gfm": "1.0.0",
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
-    "snyk": "^1.574.0",
+    "snyk": "^1.576.0",
     "unified": "9.2.1",
-    "unist-builder": "2.0.3",
-    "yargs": "16.2.0"
+    "unist-builder": "3.0.0",
+    "yargs": "17.0.0"
   },
   "devDependencies": {
     "@jest/globals": "26.6.2",

@@ -1,18 +1,18 @@
-const _ = require('lodash');
-const { resolve: resolvePath } = require('path');
-const { existsSync, readFileSync, readdirSync } = require('fs');
+import { resolve as resolvePath } from 'path';
+import { existsSync, readdirSync, readFileSync } from 'fs';
 
 /**
  * Retrieves the file contents from the data sets in ./data.
  * Returns and object indexing the data sets input/ouput/inputPath/outputPath by data set name.
  */
-module.exports = () => {
-  const dataSetsFolder = resolvePath(__dirname, 'data');
+export default () => {
+  const fileUrl = import.meta.url.replace(/^file:/, '');
+  const dataSetsFolder = resolvePath(fileUrl, '..', 'data');
+
   const dataSetNames = readdirSync(dataSetsFolder);
-  return _.reduce(
-    dataSetNames,
+  return dataSetNames.reduce(
     (seed, dataSetName) => {
-      const folderPath = resolvePath(__dirname, 'data', dataSetName);
+      const folderPath = resolvePath(fileUrl, '..', 'data', dataSetName);
 
       const inputPath = resolvePath(folderPath, 'input.md');
       if (!existsSync(inputPath)) { throw Error(`Data set input not found at ${inputPath}`); }
