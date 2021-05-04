@@ -1,12 +1,11 @@
-const _ = require('lodash');
-const {
-  describe, beforeAll, test, expect,
-} = require('@jest/globals');
+import {
+  beforeAll, describe, expect, test,
+} from '@jest/globals';
 
-const loadDataSets = require('./loadDataSets');
-const { formatFromFile, formatFromString } = require('../index');
+import loadDataSets from './loadDataSets';
+import { formatFromFile, formatFromString } from '../index';
 
-const FILE_CONTENTS = {};
+let FILE_CONTENTS = {};
 
 const ALTERNATIVE_STRINGIFY_OPTIONS = {
   bullet: '-',
@@ -23,7 +22,7 @@ describe('Format & generate ToC', () => {
 
   beforeAll(() => {
     const dataSets = loadDataSets(FILE_CONTENTS);
-    _.assign(FILE_CONTENTS, dataSets);
+    FILE_CONTENTS = { ...FILE_CONTENTS, ...dataSets };
   });
 
   test('It should format from string', async () => {

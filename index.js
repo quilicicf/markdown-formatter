@@ -1,6 +1,7 @@
 // <reference types="typescript" />
 
-const formatFromFile = require('./lib/formatFromFile');
-const formatFromString = require('./lib/formatFromString');
+import _formatFromFile from './lib/formatFromFile';
+import _formatFromString from './lib/formatFromString';
 
-module.exports = { formatFromFile, formatFromString };
+export const formatFromFile = _formatFromFile;
+export const formatFromString = _formatFromString;
