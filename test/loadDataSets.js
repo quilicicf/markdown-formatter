@@ -1,18 +1,20 @@
 import { resolve as resolvePath } from 'path';
 import { existsSync, readdirSync, readFileSync } from 'fs';
 
+import getAppRootPath from '../lib/getAppRootPath';
+
 /**
  * Retrieves the file contents from the data sets in ./data.
  * Returns and object indexing the data sets input/ouput/inputPath/outputPath by data set name.
  */
 export default () => {
-  const fileUrl = import.meta.url.replace(/^file:/, '');
-  const dataSetsFolder = resolvePath(fileUrl, '..', 'data');
+  const appRootPath = getAppRootPath();
+  const dataSetsFolderPath = resolvePath(appRootPath, 'test', 'data');
 
-  const dataSetNames = readdirSync(dataSetsFolder);
+  const dataSetNames = readdirSync(dataSetsFolderPath);
   return dataSetNames.reduce(
     (seed, dataSetName) => {
-      const folderPath = resolvePath(fileUrl, '..', 'data', dataSetName);
+      const folderPath = resolvePath(dataSetsFolderPath, dataSetName);
 
       const inputPath = resolvePath(folderPath, 'input.md');
       if (!existsSync(inputPath)) { throw Error(`Data set input not found at ${inputPath}`); }

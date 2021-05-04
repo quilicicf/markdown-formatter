@@ -1,5 +1,3 @@
-<!-- Formatted by https://github.com/quilicicf/markdown-formatter -->
-
 # markdown-formatter
 
 > A markdown formatter intended for writing specifications
@@ -160,9 +158,9 @@ The default values for the fields are in [the constants file](./lib/constants.js
 
 Each field present in the configuration you pass to `markdown-formatter` will overwrite the default value for this field.
 
-Examples: 
+Examples:
 
-* pass `{}` to use all the default values  
+* pass `{}` to use all the default values
 * pass `{ watermark: 'top' }` to overwrite the property `watermark` and use defaults for other properties
 
 #### stringifyOptions
@@ -173,9 +171,9 @@ The default values for the fields are in [the constants file](./lib/constants.js
 
 Each field present in the configuration you pass to `markdown-formatter` will overwrite the default value for this field.
 
-Examples: 
+Examples:
 
-* pass `{}` to use all the default values  
+* pass `{}` to use all the default values
 * pass `{ gfm: false }` to overwrite the property `gfm` and use defaults for other properties
 
 ## How it works

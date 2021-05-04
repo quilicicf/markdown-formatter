@@ -5,20 +5,25 @@
 /*************************
  *     REQUIRE LIBS      *
  ************************/
-
-const yargs = require('yargs');
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 /*********************
  *  REQUIRE MODULES  *
  ********************/
+import { existsSync } from 'fs';
+import isValidPath from 'is-valid-path';
 
-const { existsSync } = require('fs');
-const isValidPath = require('is-valid-path');
+import readFile from '../lib/readFile.js';
+import writeFile from '../lib/writeFile.js';
+import formatFromFile from '../lib/formatFromFile.js';
+import formatFromString from '../lib/formatFromString.js';
+import getPackageFileSync from '../lib/getPackageFileSync.js';
 
-const readFile = require('../lib/readFile');
-const writeFile = require('../lib/writeFile');
-const formatFromFile = require('../lib/formatFromFile');
-const formatFromString = require('../lib/formatFromString');
+const {
+  homepage,
+  bugs: { url: issueTrackerUrl },
+} = getPackageFileSync();
 
 /*************************
  *   PROCESS ARGUMENTS   *
@@ -63,7 +68,7 @@ const main = async (args) => {
     : process.stdout.write(`${contents}\n`);
 };
 
-const parseArgs = () => yargs
+const parseArgs = () => yargs(hideBin(process.argv))
   .usage('usage: markdown-format <options>')
   .option(ARG_CONTENT, {
     alias: 'c',
@@ -83,7 +88,9 @@ const parseArgs = () => yargs
     type: 'string',
     conflicts: 'content',
     coerce (inputFile) {
-      if (!existsSync(inputFile)) { throw Error(`File ${inputFile} does not exist`); }
+      if (inputFile && !existsSync(inputFile)) {
+        throw Error(`Input file "${inputFile}" does not exist`);
+      }
       return inputFile;
     },
   })
@@ -93,7 +100,9 @@ const parseArgs = () => yargs
     type: 'string',
 
     coerce (outputFile) {
-      if (!isValidPath(outputFile)) { throw Error(`File ${outputFile} is not a valid file path`); }
+      if (outputFile && !isValidPath(outputFile)) {
+        throw Error(`Output file "${outputFile}" is not a valid file path`);
+      }
       return outputFile;
     },
   })
@@ -103,7 +112,9 @@ const parseArgs = () => yargs
     type: 'string',
 
     coerce (configurationFile) {
-      if (!existsSync(configurationFile)) { throw Error(`File ${configurationFile} does not exist`); }
+      if (configurationFile && !existsSync(configurationFile)) {
+        throw Error(`Configuration file ${configurationFile} does not exist`);
+      }
       return configurationFile;
     },
   })
@@ -117,7 +128,11 @@ const parseArgs = () => yargs
   .help()
   .version()
   .wrap(null)
-  .epilogue('For more information, read the manual at https://github.com/quilicicf/markdown-formatter')
+  .epilogue(`For more information, read the manual: ${homepage}`)
   .argv;
 
-main(parseArgs());
+main(parseArgs())
+  .catch(() => {
+    /* Can't happen, yargs catches the errors first */
+    process.stderr.write(`This error should not happen, please contact the developer: ${issueTrackerUrl}\n`);
+  });
