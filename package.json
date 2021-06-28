@@ -44,7 +44,7 @@
     "yargs": "17.0.1"
   },
   "devDependencies": {
-    "@jest/globals": "27.0.3",
+    "@jest/globals": "27.0.5",
     "@talend/eslint-config": "3.0.0",
     "eslint": "7.29.0",
     "eslint-config-airbnb": "18.2.1",
@@ -54,7 +54,7 @@
     "eslint-plugin-jest": "24.3.6",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.24.0",
-    "jest": "27.0.4"
+    "jest": "27.0.5"
   },
   "snyk": true
 }
