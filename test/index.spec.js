@@ -27,58 +27,58 @@ describe('Format & generate ToC', () => {
 
   test('It should format from string', async () => {
     const { simple: { input, output } } = FILE_CONTENTS;
-    const { contents: markdownWithToc } = await formatFromString(input);
+    const { value: markdownWithToc } = await formatFromString(input);
 
     expect(markdownWithToc).toEqual(output);
   });
 
   test('It should format from file', async () => {
     const { simple: { inputPath, output } } = FILE_CONTENTS;
-    const { contents: markdownWithToc } = await formatFromFile(inputPath);
+    const { value: markdownWithToc } = await formatFromFile(inputPath);
 
     expect(markdownWithToc).toEqual(output);
   });
 
   test('It should be idempotent', async () => {
     const { simple: { input } } = FILE_CONTENTS;
-    const { contents: markdownFormattedOnce } = await formatFromString(input);
-    const { contents: markdownFormattedTwice } = await formatFromString(markdownFormattedOnce);
+    const { value: markdownFormattedOnce } = await formatFromString(input);
+    const { value: markdownFormattedTwice } = await formatFromString(markdownFormattedOnce);
 
     expect(markdownFormattedTwice).toEqual(markdownFormattedOnce);
   });
 
   test('It should use default ToC configuration when undefined', async () => {
     const { default_toc_conf: { input, output } } = FILE_CONTENTS;
-    const { contents: formattedMarkdown } = await formatFromString(input);
+    const { value: formattedMarkdown } = await formatFromString(input);
 
     expect(formattedMarkdown).toEqual(output);
   });
 
   test('It should overwrite default stringify options when formatting from string', async () => {
     const { overwritten_stringify_options: { input, output } } = FILE_CONTENTS;
-    const { contents: formattedMarkdown } = await formatFromString(input, {}, ALTERNATIVE_STRINGIFY_OPTIONS);
+    const { value: formattedMarkdown } = await formatFromString(input, {}, ALTERNATIVE_STRINGIFY_OPTIONS);
 
     expect(formattedMarkdown).toEqual(output);
   });
 
   test('It should overwrite default stringify options when formatting from file', async () => {
     const { overwritten_stringify_options: { inputPath, output } } = FILE_CONTENTS;
-    const { contents: formattedMarkdown } = await formatFromFile(inputPath, {}, ALTERNATIVE_STRINGIFY_OPTIONS);
+    const { value: formattedMarkdown } = await formatFromFile(inputPath, {}, ALTERNATIVE_STRINGIFY_OPTIONS);
 
     expect(formattedMarkdown).toEqual(output);
   });
 
   test('It should add watermark at top', async () => {
     const { watermark_top: { input, output } } = FILE_CONTENTS;
-    const { contents: formattedMarkdown } = await formatFromString(input, { watermark: 'top' });
+    const { value: formattedMarkdown } = await formatFromString(input, { watermark: 'top' });
 
     expect(formattedMarkdown).toEqual(output);
   });
 
   test('It should not add watermark at top twice', async () => {
     const { watermark_top: { input } } = FILE_CONTENTS;
-    const { contents: formattedOnce } = await formatFromString(input, { watermark: 'top' });
-    const { contents: formattedTwice, messages } = await formatFromString(formattedOnce, { watermark: 'top' });
+    const { value: formattedOnce } = await formatFromString(input, { watermark: 'top' });
+    const { value: formattedTwice, messages } = await formatFromString(formattedOnce, { watermark: 'top' });
 
     expect(messages).toHaveLength(2);
     const [
@@ -94,14 +94,14 @@ describe('Format & generate ToC', () => {
 
   test('It should remove watermark at top if watermark type is none', async () => {
     const { remove_watermark_top: { input, output } } = FILE_CONTENTS;
-    const { contents: formattedMarkdown } = await formatFromString(input);
+    const { value: formattedMarkdown } = await formatFromString(input);
 
     expect(formattedMarkdown).toEqual(output);
   });
 
   test('It should add watermark in ToC', async () => {
     const { watermark_toc: { input, output } } = FILE_CONTENTS;
-    const { contents: formattedMarkdown } = await formatFromString(input, { watermark: 'toc' });
+    const { value: formattedMarkdown } = await formatFromString(input, { watermark: 'toc' });
 
     expect(formattedMarkdown).toEqual(output);
   });
