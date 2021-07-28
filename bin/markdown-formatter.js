@@ -58,14 +58,14 @@ const main = async (args) => {
     stringifyOptions = {},
   } = configurationOverwrites;
 
-  const { contents } = inputFilePath
+  const { value } = inputFilePath
     ? await formatFromFile(inputFilePath, markdownFormatterOptions, stringifyOptions)
     : await formatFromString(content, markdownFormatterOptions, stringifyOptions);
 
   const fileDestination = shouldReplaceFile ? inputFilePath : outputFilePath;
   return fileDestination
-    ? writeFile(fileDestination, contents)
-    : process.stdout.write(`${contents}\n`);
+    ? writeFile(fileDestination, value)
+    : process.stdout.write(`${value}\n`);
 };
 
 const parseArgs = () => yargs(hideBin(process.argv))

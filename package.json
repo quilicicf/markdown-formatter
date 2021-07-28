@@ -3,7 +3,7 @@
   "version": "3.0.4",
   "description": "A markdown formatter intended for writing specifications",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "types/index.d.ts",
   "type": "module",
   "bin": {
     "markdown-format": "bin/markdown-formatter.js"
@@ -41,6 +41,7 @@
     "snyk": "^1.668.0",
     "unified": "10.0.1",
     "unist-builder": "3.0.0",
+    "vfile": "5.0.2",
     "yargs": "17.0.1"
   },
   "devDependencies": {

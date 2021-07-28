@@ -152,7 +152,7 @@ You can pass values for these two using the [CLI](#cli) and [API](#api).
 
 #### markdownFormatterOptions
 
-The `markdownFormatterOptions` structure is defined by this plugin in the [TypeScript module declaration](./index.d.ts) (in the interface `MarkdownFormatterOptions`).
+The `markdownFormatterOptions` structure is defined by this plugin in the [TypeScript module declaration](types/index.d.ts) (in the interface `MarkdownFormatterOptions`).
 
 The default values for the fields are in [the constants file](./lib/constants.js) (in property `DEFAULT_MARKDOWN_FORMATTER_OPTIONS`).
 
