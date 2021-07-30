@@ -3,7 +3,7 @@ import {
 } from '@jest/globals';
 
 import loadDataSets from './loadDataSets';
-import { formatFromFile, formatFromString } from '../index';
+import { formatFromFile, formatFromString } from '../types';
 
 let FILE_CONTENTS = {};
 
