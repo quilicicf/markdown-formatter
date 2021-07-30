@@ -1,5 +1,10 @@
 # CHANGELOG
 
+* __4.0.0:__
+  * :rotating_light: __Breaking changes__
+    * The content of the result is now in attribute `value` (formerly `contents`). See [commit `736356a`](https://github.com/quilicicf/markdown-formatter/commit/736356a14548880f8eafacb29f45c2c09bb304ba).
+  * :bug: Fix TS types
+  * :lock: Lib upgrades
 * __3.0.4:__
   * :lock: Lib upgrades
 * __3.0.3:__
