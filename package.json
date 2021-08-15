@@ -34,7 +34,7 @@
   "dependencies": {
     "is-valid-path": "0.1.1",
     "mdast-util-toc": "6.1.0",
-    "remark": "13.0.0",
+    "remark": "14.0.1",
     "remark-gfm": "1.0.0",
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
