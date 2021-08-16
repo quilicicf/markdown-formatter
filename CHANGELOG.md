@@ -1,10 +1,13 @@
 # CHANGELOG
 
+* __4.0.2:__
+  * :bug: Fix for [Atom package](https://atom.io/packages/markdown-spec-formatter) relying on this module
 * __4.0.1:__
   * :bug: Fix TS types
 * __4.0.0:__
   * :rotating_light: __Breaking changes__
-    * The content of the result is now in attribute `value` (formerly `contents`). See [commit `736356a`](https://github.com/quilicicf/markdown-formatter/commit/736356a14548880f8eafacb29f45c2c09bb304ba).
+    * The content of the result is now in attribute `value` (formerly `contents`).
+      See [commit `736356a`](https://github.com/quilicicf/markdown-formatter/commit/736356a14548880f8eafacb29f45c2c09bb304ba).
   * :bug: Fix TS types
   * :lock: Lib upgrades
 * __3.0.4:__
@@ -26,7 +29,7 @@
   * :lock: Upgrade libs to fix vulnerabilities
 * __2.0.1:__
   * [Better cursor positioning](https://github.com/quilicicf/markdown-formatter/pull/2)
-* __2.0.0:__ 
+* __2.0.0:__
   * [Compute cursor position](https://github.com/quilicicf/markdown-formatter/pull/1)
   * :rotating_light: BREAKING CHANGES
     * The result for `format*` methods is not the formatted markdown as string anymore. Get the formatted markdown as string with `result.contents`.
