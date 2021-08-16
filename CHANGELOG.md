@@ -1,5 +1,7 @@
 # CHANGELOG
 
+* __4.0.3:__
+  * :lock: Upgrade all libs
 * __4.0.2:__
   * :bug: Fix for [Atom package](https://atom.io/packages/markdown-spec-formatter) relying on this module
 * __4.0.1:__
