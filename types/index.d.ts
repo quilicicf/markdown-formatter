@@ -8,14 +8,14 @@ export interface MarkdownFormatterOptions {
     | 'toc'; // Watermark added to the ToC's end tag
 }
 
-export type formatFromString = (
+export function formatFromString (
   sourceMarkdownString: string,
   markdownFormatterOptions?: MarkdownFormatterOptions,
   stringifyOptions?: RemarkStringifyOptions,
-) => Promise<VFile>
+): Promise<VFile>;
 
-export type formatFromFile = (
+export function formatFromFile (
   sourceMarkdownFilePath: string,
   markdownFormatterOptions?: MarkdownFormatterOptions,
   stringifyOptions?: RemarkStringifyOptions,
-) => Promise<VFile>
+): Promise<VFile>;

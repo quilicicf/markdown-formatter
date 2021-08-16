@@ -14,16 +14,12 @@ import { hideBin } from 'yargs/helpers';
 import { existsSync } from 'fs';
 import isValidPath from 'is-valid-path';
 
+import { homePage, bugPage } from '../lib/constants.js';
+
 import readFile from '../lib/readFile.js';
 import writeFile from '../lib/writeFile.js';
 import formatFromFile from '../lib/formatFromFile.js';
 import formatFromString from '../lib/formatFromString.js';
-import getPackageFileSync from '../lib/getPackageFileSync.js';
-
-const {
-  homepage,
-  bugs: { url: issueTrackerUrl },
-} = getPackageFileSync();
 
 /*************************
  *   PROCESS ARGUMENTS   *
@@ -128,11 +124,11 @@ const parseArgs = () => yargs(hideBin(process.argv))
   .help()
   .version()
   .wrap(null)
-  .epilogue(`For more information, read the manual: ${homepage}`)
+  .epilogue(`For more information, read the manual: ${homePage}`)
   .argv;
 
 main(parseArgs())
   .catch(() => {
     /* Can't happen, yargs catches the errors first */
-    process.stderr.write(`This error should not happen, please contact the developer: ${issueTrackerUrl}\n`);
+    process.stderr.write(`This error should not happen, please contact the developer: ${bugPage}\n`);
   });
