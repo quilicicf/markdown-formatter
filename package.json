@@ -41,7 +41,7 @@
     "snyk": "^1.682.0",
     "unified": "10.1.0",
     "unist-builder": "3.0.0",
-    "vfile": "5.0.2",
+    "vfile": "5.1.0",
     "yargs": "17.1.1"
   },
   "devDependencies": {
