@@ -10,8 +10,8 @@ const main = async () => {
   const appRootPath = getAppRootPath();
   const readmePath = resolvePath(appRootPath, 'README.md');
 
-  const { contents } = await formatFromFile(readmePath);
-  await writeFile(readmePath, contents);
+  const { value } = await formatFromFile(readmePath);
+  await writeFile(readmePath, value);
 };
 
 main()

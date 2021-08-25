@@ -10,7 +10,9 @@
   },
   "scripts": {
     "lint": "eslint '**/*.js'",
-    "test": "npm run lint && npm run test-only",
+    "generate-defaults": "tsc lib/constants.ts --module ESNext --skipLibCheck --moduleResolution node --target ESNext",
+    "validate-defaults": "tsc lib/constants.ts --module ESNext --skipLibCheck --moduleResolution node --target ESNext --noEmit",
+    "test": "npm run lint && npm run validate-defaults && npm run test-only",
     "test-only": "node --experimental-vm-modules node_modules/.bin/jest",
     "format:readme": "node bin/markdown-formatter.js -f README.md -r -u configurationExample.json",
     "snyk-protect": "snyk protect",
@@ -38,7 +40,7 @@
     "remark-gfm": "2.0.0",
     "remark-parse": "10.0.0",
     "remark-stringify": "10.0.0",
-    "snyk": "^1.684.0",
+    "snyk": "^1.688.0",
     "unified": "10.1.0",
     "unist-builder": "3.0.0",
     "vfile": "5.1.0",
@@ -50,12 +52,14 @@
     "eslint": "7.32.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-import-resolver-node": "0.3.6",
-    "eslint-plugin-import": "2.24.0",
+    "eslint-plugin-import": "2.24.2",
     "eslint-plugin-jasmine": "4.1.2",
     "eslint-plugin-jest": "24.4.0",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.24.0",
-    "jest": "27.0.6"
+    "jest": "27.0.6",
+    "mdast-util-to-markdown": "^1.2.1",
+    "typescript": "4.3.5"
   },
   "snyk": true
 }

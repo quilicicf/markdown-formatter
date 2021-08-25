@@ -95,12 +95,12 @@ Both methods return a [VFile](https://github.com/vfile/vfile#api).
 const { formatFromString } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const { contents, messages } = await formatFromString(
+  const { value, messages } = await formatFromString(
     '**Toto**', // Markdown string
     { watermark: 'top' }, // Markdown-formatter options
     { gfm: false }, // Stringify options
   );
-  process.stdout.write(`Formatted from string:\n${contents}\n`);
+  process.stdout.write(`Formatted from string:\n${value}\n`);
   process.stdout.write(`With messages:\n${messages}\n`);
 }
 
@@ -123,12 +123,12 @@ main();
 const { formatFromFile } = require('@quilicicf/markdown-formatter');
 
 const main = async () => {
-  const { contents } = await formatFromFile(
+  const { value } = await formatFromFile(
     filePath, // Markdown string
     { watermark: 'top' }, // Markdown-formatter options
-    { gfm: false }, // Stringify options
+    { bullet: '+' }, // Stringify options
   );
-  process.stdout.write(`Formatted from file:\n${contents}\n`);
+  process.stdout.write(`Formatted from file:\n${value}\n`);
 }
 
 main();

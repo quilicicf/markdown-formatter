@@ -21,7 +21,7 @@ const ALTERNATIVE_STRINGIFY_OPTIONS = {
 describe('Format & generate ToC', () => {
 
   beforeAll(() => {
-    const dataSets = loadDataSets(FILE_CONTENTS);
+    const dataSets = loadDataSets();
     FILE_CONTENTS = { ...FILE_CONTENTS, ...dataSets };
   });
 

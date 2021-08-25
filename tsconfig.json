@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "allowJs": true,
+    "checkJs": true,
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+  }
+}
