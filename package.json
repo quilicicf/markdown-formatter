@@ -48,13 +48,13 @@
     "@jest/globals": "27.3.1",
     "@talend/eslint-config": "4.0.0",
     "eslint": "8.2.0",
-    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-airbnb": "19.0.0",
     "eslint-import-resolver-node": "0.3.6",
-    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jasmine": "4.1.2",
-    "eslint-plugin-jest": "25.2.3",
-    "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-react": "7.26.1",
+    "eslint-plugin-jest": "25.2.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.27.0",
     "jest": "27.3.1"
   },
   "snyk": true
