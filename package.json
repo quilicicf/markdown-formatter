@@ -38,7 +38,7 @@
     "remark-gfm": "3.0.1",
     "remark-parse": "10.0.1",
     "remark-stringify": "10.0.2",
-    "snyk": "^1.797.0",
+    "snyk": "^1.813.0",
     "unified": "10.1.1",
     "unist-builder": "3.0.0",
     "vfile": "5.2.0",
