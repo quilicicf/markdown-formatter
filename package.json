@@ -48,7 +48,7 @@
     "@jest/globals": "27.4.4",
     "@talend/eslint-config": "4.0.1",
     "eslint": "8.5.0",
-    "eslint-config-airbnb": "19.0.2",
+    "eslint-config-airbnb": "19.0.4",
     "eslint-import-resolver-node": "0.3.6",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jasmine": "4.1.3",
