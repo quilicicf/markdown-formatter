@@ -1,5 +1,7 @@
 # CHANGELOG
 
+* __4.0.5:__
+  * :lock: Upgrade all libs
 * __4.0.4:__
   * :bug: Fix TS types
 * __4.0.3:__
