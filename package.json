@@ -47,7 +47,7 @@
   "devDependencies": {
     "@jest/globals": "29.0.3",
     "@talend/eslint-config": "4.0.2",
-    "eslint": "8.23.1",
+    "eslint": "8.24.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-import-resolver-node": "0.3.6",
     "eslint-plugin-import": "2.26.0",
