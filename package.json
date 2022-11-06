@@ -42,7 +42,7 @@
     "unified": "10.1.2",
     "unist-builder": "3.0.0",
     "vfile": "5.3.5",
-    "yargs": "17.6.0"
+    "yargs": "17.6.2"
   },
   "devDependencies": {
     "@jest/globals": "29.2.2",
