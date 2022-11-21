@@ -41,7 +41,7 @@
     "remark-stringify": "10.0.2",
     "unified": "10.1.2",
     "unist-builder": "3.0.0",
-    "vfile": "5.3.5",
+    "vfile": "5.3.6",
     "yargs": "17.6.2"
   },
   "devDependencies": {
