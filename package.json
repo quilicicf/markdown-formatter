@@ -34,7 +34,7 @@
   "dependencies": {
     "@snyk/protect": "^1.1091.0",
     "is-valid-path": "0.1.1",
-    "mdast-util-toc": "6.1.0",
+    "mdast-util-toc": "6.1.1",
     "remark": "14.0.2",
     "remark-gfm": "3.0.1",
     "remark-parse": "10.0.1",
