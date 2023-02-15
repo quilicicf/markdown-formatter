@@ -1,4 +1,5 @@
 extends: '@talend/eslint-config/api-test-jasmine.yaml'
+parser: "@babel/eslint-parser"
 env:
   jest/globals: true
 plugins:
