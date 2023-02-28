@@ -1,3 +1,5 @@
+<!-- Formatted by https://github.com/quilicicf/markdown-formatter -->
+
 # markdown-formatter
 
 > A markdown formatter intended for writing specifications

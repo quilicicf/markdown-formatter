@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="format_readme" type="NodeJSConfigurationType" path-to-js-file="scripts/formatReadme.js" working-dir="$PROJECT_DIR$">
+  <configuration default="false" name="format_readme" type="NodeJSConfigurationType" path-to-node="$USER_HOME$/.asdf/shims/node" path-to-js-file="scripts/formatReadme.js" working-dir="$PROJECT_DIR$">
     <method v="2" />
   </configuration>
 </component>
