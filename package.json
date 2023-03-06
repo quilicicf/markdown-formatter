@@ -47,7 +47,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
     "@jest/globals": "29.4.3",
-    "@talend/eslint-config": "4.0.2",
+    "@talend/eslint-config": "12.0.2",
     "eslint": "8.35.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-import-resolver-node": "0.3.7",
