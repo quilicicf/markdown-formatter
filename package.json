@@ -34,20 +34,20 @@
   "dependencies": {
     "@snyk/protect": "^1.1187.0",
     "is-valid-path": "0.1.1",
-    "mdast-util-toc": "6.1.1",
+    "mdast-util-toc": "7.0.0",
     "remark": "14.0.3",
     "remark-gfm": "3.0.1",
     "remark-parse": "10.0.2",
     "remark-stringify": "10.0.3",
     "unified": "10.1.2",
-    "unist-builder": "3.0.1",
+    "unist-builder": "4.0.0",
     "vfile": "6.0.1",
     "yargs": "17.7.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.22.7",
     "@jest/globals": "29.6.1",
-    "@talend/eslint-config": "12.1.1",
+    "@talend/eslint-config": "4.0.2",
     "eslint": "8.44.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-import-resolver-node": "0.3.7",
