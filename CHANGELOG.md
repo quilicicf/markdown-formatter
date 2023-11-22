@@ -4,6 +4,7 @@
 
 <!-- TOC START -->
 
+* [5.0.0](#500)
 * [4.0.7](#407)
 * [4.0.6](#406)
 * [4.0.5](#405)
@@ -23,6 +24,12 @@
 * [1.0.0](#100)
 
 <!-- TOC END -->
+
+## 5.0.0
+
+* :rotating\_light: __Breaking changes__
+  * The remark dependencies were upgraded to new major versions. This should only impact users with custom configurations since the format of the configuration has changed. More information in [remark's changelog](https://github.com/remarkjs/remark/releases/tag/15.0.0). If you were using `listItemIndent: '1'`, you should remove it or use `listItemIndent: 'one'` instead (but that's the default, so omitting it works too).
+* :lock: Upgrade all libs
 
 ## 4.0.7
 
