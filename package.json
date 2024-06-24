@@ -39,7 +39,7 @@
     "remark-gfm": "4.0.0",
     "remark-parse": "11.0.0",
     "remark-stringify": "11.0.0",
-    "unified": "11.0.4",
+    "unified": "11.0.5",
     "unist-builder": "4.0.0",
     "vfile": "6.0.1",
     "yargs": "17.7.2"
