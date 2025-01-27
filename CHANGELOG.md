@@ -4,6 +4,7 @@
 
 <!-- TOC START -->
 
+* [5.1.0](#510)
 * [5.0.0](#500)
 * [4.0.7](#407)
 * [4.0.6](#406)
@@ -23,7 +24,12 @@
 * [2.0.0](#200)
 * [1.0.0](#100)
 
-<!-- TOC END -->
+<!-- TOC END: Formatted by https://github.com/quilicicf/markdown-formatter -->
+
+## 5.1.0
+
+* :new: Add support for front matter
+* :lock: Upgrade libs
 
 ## 5.0.0
 
