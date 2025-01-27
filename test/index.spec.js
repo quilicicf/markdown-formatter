@@ -105,4 +105,11 @@ describe('Format & generate ToC', () => {
 
     expect(formattedMarkdown).toEqual(output);
   });
+
+  test('It should preserve front matter content', async () => {
+    const { front_matter: { input, output } } = FILE_CONTENTS;
+    const { value: formattedMarkdown } = await formatFromString(input, {});
+
+    expect(formattedMarkdown).toEqual(output);
+  });
 });

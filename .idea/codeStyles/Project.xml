@@ -73,7 +73,7 @@
       <option name="TABLE_LEFT_ALIGN_MARKER" value="0" />
       <option name="RIGHT_MARGIN" value="120" />
     </MarkdownNavigatorCodeStyleSettings>
-    <PostgresCodeStyleSettings version="6">
+    <PostgresCodeStyleSettings version="7">
       <option name="USE_GENERAL_STYLE" value="false" />
       <option name="CUSTOM_TYPE_CASE" value="0" />
       <option name="QUERY_SECTION_1ST_WORD_ALIGN" value="2" />
