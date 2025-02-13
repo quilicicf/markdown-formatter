@@ -46,10 +46,10 @@
     "yargs": "17.7.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.26.5",
+    "@babel/eslint-parser": "7.26.8",
     "@jest/globals": "29.7.0",
-    "@talend/eslint-config": "4.0.2",
-    "eslint": "8.57.1",
+    "@talend/eslint-config": "13.2.1",
+    "eslint": "9.20.1",
     "eslint-config-airbnb": "19.0.4",
     "eslint-import-resolver-node": "0.3.9",
     "eslint-plugin-import": "2.31.0",
