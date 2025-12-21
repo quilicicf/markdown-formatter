@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/quilicicf/markdown-formatter",
   "dependencies": {
-    "@snyk/protect": "^1.1301.1",
+    "@snyk/protect": "^1.1301.2",
     "is-valid-path": "0.1.1",
     "mdast-util-toc": "7.1.0",
     "remark": "15.0.1",
