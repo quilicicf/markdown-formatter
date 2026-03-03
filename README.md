@@ -4,40 +4,9 @@
 
 > A markdown formatter intended for writing specifications
 
-<!-- TOC START min:2 max: 4 -->
+## 🚨 Migrated to codeberg
 
-* [Badges and stuff](#badges-and-stuff)
-
-  * [Info](#info)
-  * [Status](#status)
-
-* [What it is](#what-it-is)
-
-* [Use it](#use-it)
-
-  * [CLI](#cli)
-
-    * [CLI options](#cli-options)
-
-  * [API](#api)
-
-    * [formatFromString](#formatfromstring)
-    * [formatFromFile](#formatfromfile)
-
-  * [Options](#options)
-
-    * [markdownFormatterOptions](#markdownformatteroptions)
-    * [stringifyOptions](#stringifyoptions)
-
-* [How it works](#how-it-works)
-
-* [ToC generation](#toc-generation)
-
-  * [ToC parameters](#toc-parameters)
-
-* [Roadmap](#roadmap)
-
-<!-- TOC END -->
+De-GAFAMization in process, [new repository available here](https://codeberg.org/quilicicf/markdown-formatter).
 
 ## Badges and stuff
 
